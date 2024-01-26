@@ -6,13 +6,13 @@ class smart_array {
 private:
     int* ptr;
     int size_;
-    int count;
+    int index;
 
 public:
     smart_array(int size) {
         size_ = size;
         ptr = new int[size];
-        count = 0;
+        index = 0;
     }
 
     ~smart_array() {
@@ -20,15 +20,15 @@ public:
     }
 
     void add_element(int a) {
-        if (count >= size_) {
+        if (index >= size_) {
             throw std::length_error("Oversize");
         }
-        ptr[count] = a;
-        count++;
+        ptr[index] = a;
+        index++;
     }
 
     int get_element(int i) {
-        if (i < 0 || i >= count) {
+        if (i < 0 || i >= index) {
             throw std::out_of_range("Incorrect_index");
         }
         return ptr[i];
