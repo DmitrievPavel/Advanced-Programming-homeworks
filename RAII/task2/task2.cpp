@@ -37,6 +37,7 @@ class smart_array {
     smart_array& operator=(const smart_array& other) {
 
         size_ = other.size_;
+        index = other.index;
 
         for (int i = 0; i < size_; ++i) {
             ptr[i] = other.ptr[i];
@@ -59,7 +60,7 @@ int main()
         new_array.add_element(34);
 
         arr = new_array;
-        std::cout << arr.get_element(0) << ", " << arr.get_element(1) << std::endl;
+        std::cout << arr.get_element(0) << ", " << arr.get_element(1) <<  std::endl;
     }
     catch (const std::exception& ex) {
         std::cout << ex.what() << std::endl;
