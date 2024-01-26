@@ -11,7 +11,7 @@ class smart_array {
  public:
     smart_array(int size) {
         size_ = size;
-        ptr = new int[size];
+        ptr = new int[size_];
         index = 0;
     }
 
@@ -34,14 +34,18 @@ class smart_array {
         return ptr[i];
     }
 
-    smart_array& operator=(const smart_array& other) {
+    smart_array& operator=(const smart_array& right) {
+        
+        int* tmp = new int[right.size_];
 
-        size_ = other.size_;
-        index = other.index;
-
-        for (int i = 0; i < size_; ++i) {
-            ptr[i] = other.ptr[i];
+        for (int i = 0; i < right.size_; ++i) {
+            tmp[i] = right.ptr[i];
         }
+
+        delete[] ptr;
+        size_ = right.size_;
+        index = right.index;
+        ptr = tmp;
 
         return *this;
     }
@@ -60,7 +64,9 @@ int main()
         new_array.add_element(34);
 
         arr = new_array;
-        std::cout << arr.get_element(0) << ", " << arr.get_element(1) <<  std::endl;
+        std::cout << arr.get_element(0) << ", " << arr.get_element(1) << std::endl;
+        //new_array = arr;
+        //std::cout << new_array.get_element(0) << ", " << new_array.get_element(1) << ", " << new_array.get_element(2) << std::endl;
     }
     catch (const std::exception& ex) {
         std::cout << ex.what() << std::endl;
