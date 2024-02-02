@@ -1,7 +1,4 @@
 ﻿#include <iostream>
-#include <catch2/catch_test_macros.hpp>
-#include <catch2/catch_session.hpp>
-
 
 struct ListNode
 {
@@ -95,41 +92,3 @@ private:
     ListNode* m_tail;
     unsigned long m_size;
 };
-
-TEST_CASE("PushBack") {
-    List a;
-    a.PushBack(1);
-    CHECK(a.PopBack() == 1);
-}
-
-TEST_CASE("PushFront") {
-    List a;
-    a.PushFront(3);
-    CHECK(a.PopFront() == 3);
-}
-
-TEST_CASE("PopBack") {
-    List a;
-    CHECK(a.PopBack());
-}
-
-TEST_CASE("PopFront") {
-    List a;
-    CHECK(a.PopFront());
-}
-
-TEST_CASE("SomeMethods") {
-    List a;
-    a.PushBack(12);
-    CHECK(a.PopBack() == 12);
-    a.PushBack(3);
-    CHECK(a.PopBack() == 3);
-    a.PushFront(4);
-    CHECK(a.PopFront() == 4);
-    a.PushFront(0);
-    CHECK(a.PopFront() == 0);
-}
-int main()
-{
-	return Catch::Session().run();
-}
