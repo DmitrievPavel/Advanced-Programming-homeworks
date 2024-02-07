@@ -8,9 +8,9 @@ T pow(T a) {
     return a * a;
 }
 
-template <>
+template <class T>
 
-std::vector<int> pow(std::vector<int> a) {
+std::vector<T> pow(std::vector<T> a) {
 
     for (int i = 0; i < a.size(); ++i) {
         a[i] *= a[i];
@@ -25,17 +25,17 @@ int main()
 
     std::cout << "[IN] " << a << "\n[OUT] " << pow(a) << std::endl;
 
-    std::vector<int> vec = { -1, 4, 8 };
+    std::vector<double> vec = { -1, 4, 8 };
 
     std::cout << "[IN] ";
 
-    for (int i : vec) {
+    for (auto i : vec) {
         std::cout << i << " ";
     }
 
     std::cout << "\n[OUT] ";
 
-    for (int i : pow(vec)) {
+    for (auto i : pow(vec)) {
         std::cout << i << " ";
     }
 
