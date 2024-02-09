@@ -3,25 +3,31 @@
 
 template <class T>
 class Myvector {
+
 private:
     T* ptr;
     size_t logic_size;
     size_t actual_size;
+
 public:
+
     Myvector() {
         logic_size = 1;
         actual_size = 0;
         ptr = new T[logic_size];
     }
+
     ~Myvector() {
         delete[] ptr;
     }
+
     T at(size_t i) {
         if (i >= actual_size) {
             throw std::out_of_range("Incorrect_index");
         }
         return ptr[i];
     }
+
     void push_back(T value) {
         if (actual_size == logic_size) {
             logic_size *= 2;
@@ -35,9 +41,11 @@ public:
         ptr[actual_size] = value;
         ++actual_size;
     }
+
     size_t size() {
         return actual_size;
     }
+
     size_t capacity() {
         return logic_size;
     }
